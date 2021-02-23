@@ -1,0 +1,23 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.ticket__theme {
+    .badge {
+        font-size: 14px;
+        vertical-align: top;
+    }
+}
+
+#use-old-attachment-condition {
+    &[data-condition="true"] {
+        + #attachment-group {
+            display: none; // Скрыть форму загрузки если стоит галочка "Использовать старый файл"
+        }
+    }
+}
