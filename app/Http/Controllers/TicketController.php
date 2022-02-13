@@ -17,7 +17,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Mail;
 
-class TicketsController extends Controller
+class TicketController extends Controller
 {
     private $attachmentService;
 
