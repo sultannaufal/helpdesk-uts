@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\User;
 use GuzzleHttp\Client;
 
 class TelegramService

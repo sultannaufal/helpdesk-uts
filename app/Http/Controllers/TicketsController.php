@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\TicketRequest;
 use App\Mail\TicketClosed;
 use App\Mail\TicketCreated;
 use App\Models\AutoLogin;
+use App\Models\Location;
 use App\Models\Ticket;
 use App\Models\User;
-use App\Models\Location;
-use App\Models\Image;
 use App\Services\AttachmentService;
 use App\Services\TelegramService;
 use Auth;
 use Gate;
-use Illuminate\Http\Request;
 use Mail;
 
 class TicketsController extends Controller
@@ -113,7 +112,7 @@ class TicketsController extends Controller
     {
         Gate::authorize('edit-ticket', $ticket);
 
-        if (Auth::user()->isManager() && ! $ticket->isViewedBy(Auth::user())) {
+        if (Auth::user()->isManager() && !$ticket->isViewedBy(Auth::user())) {
             $ticket->markAsViewedBy(Auth::user());
         }
         $image = $ticket->image;
