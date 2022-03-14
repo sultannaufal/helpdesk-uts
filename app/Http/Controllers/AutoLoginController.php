@@ -11,7 +11,7 @@ class AutoLoginController extends Controller
 {
     public function autologin(Request $request, string $token)
     {
-        if (! $request->hasValidSignature()) { // Защита от подбора
+        if (! $request->hasValidSignature()) {
             abort(401);
         }
 
@@ -19,7 +19,6 @@ class AutoLoginController extends Controller
             'ticket' => 'integer|exists:tickets,id',
         ]);
 
-        // Пытаться логинить только если гость, к тому же авторизованный модератор не рад будет получить 410 ответ
         if (\Auth::guest()) {
 
             $autoLoginLink = AutoLogin::where('token', '=', $token)->firstOrFail();

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Gate;
 
-class LocationsController extends Controller
+class LocationController extends Controller
 {
     public function index()
     {

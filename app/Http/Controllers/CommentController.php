@@ -13,7 +13,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Mail;
 
-class CommentsController extends Controller
+class CommentController extends Controller
 {
     private $attachmentService;
 

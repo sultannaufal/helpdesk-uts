@@ -16,7 +16,7 @@ use Auth;
 use Gate;
 use Mail;
 
-class TicketsController extends Controller
+class TicketController extends Controller
 {
     private $attachmentService;
 

@@ -8,7 +8,7 @@ use App\Models\Ticket;
 use App\Models\Image;
 use Gate;
 
-class ImagesController extends Controller
+class ImageController extends Controller
 {
     public function store(ImageRequest $request, Ticket $ticket)
     {

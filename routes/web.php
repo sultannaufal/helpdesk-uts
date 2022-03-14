@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use RealRashid\SweetAlert\Facades\Alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +15,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 Auth::routes();
 
-Route::get('/autologin/{token}', 'AutoLoginController@autologin')->name('autologin');
+Route::get('/autologin/{token}', [AutoLoginController::class, 'autologin'])->name('autologin');
 
 Route::middleware('auth')->group(function() {
 
@@ -24,19 +23,25 @@ Route::middleware('auth')->group(function() {
         return redirect(route('tickets.index'));
     })->name('home');
 
-    Route::resource('tickets', 'TicketsController');
-    Route::post('tickets/{ticket}/close', 'TicketsController@close')->name('tickets.close');
-    Route::post('tickets/{ticket}/assign', 'TicketsController@assignManager')->name('tickets.assign');
+    Route::controller(TicketController::class)->group(function () {
+        Route::post('tickets/{ticket}/close', 'close')->name('tickets.close');
+        Route::post('tickets/{ticket}/assign', 'assignManager')->name('tickets.assign');
+        Route::get('print/option', 'printOption')->name('option');
+        Route::get('/print/{date1}/{date2}', 'reportDate')->name('print');
+    });
+    Route::resource('tickets', TicketController::class);
 
-    Route::resource('tickets/{ticket}/comments', 'CommentsController')->except(['index', 'show']);
-    Route::get('print/option', 'TicketsController@printOption')->name('option');
-    Route::get('/print/{date1}/{date2}', 'TicketsController@reportDate')->name('print');
-    Route::resource('/locations', 'LocationsController');
-    Route::get('tickets/{ticket}/add-image', 'ImagesController@add')->name('image.add');
-    Route::resource('tickets/{ticket}/images', 'ImagesController')->except(['index', 'show']);
+    Route::resource('tickets/{ticket}/comments', CommentController::class)->except(['index', 'show']);
+    Route::resource('/locations', LocationController::class);
 
-    Route::resource('users', 'UserController', ['except' => ['show']]);
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
-	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
-	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+    Route::get('tickets/{ticket}/add-image', [ImageController::class, 'add'])->name('image.add');
+    Route::resource('tickets/{ticket}/images', ImageController::class)->except(['index', 'show']);
+
+    Route::resource('users', UserController::class)->except(['show']);
+
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('profile', 'edit')->name('profile.edit');
+        Route::put('profile', 'update')->name('profile.update');
+        Route::put('profile/password', 'password')->name('profile.password');
+    });
 });
