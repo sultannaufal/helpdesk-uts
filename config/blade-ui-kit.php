@@ -24,7 +24,7 @@ return [
         'countdown' => Components\DateTime\Countdown::class,
         'cron' => Components\Support\Cron::class,
         'dropdown' => Components\Navigation\Dropdown::class,
-        'easy-mde' => Components\Editors\EasyMDE::class,
+        'markdown-editor' => Components\Editors\EasyMDE::class,
         'email' => Components\Forms\Inputs\Email::class,
         'error' => Components\Forms\Error::class,
         'flat-pickr' => Components\Forms\Inputs\FlatPickr::class,

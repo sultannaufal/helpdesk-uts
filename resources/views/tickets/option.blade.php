@@ -10,11 +10,11 @@
                     <div class="card-body">
                         <div class="input group mb-3">
                             <label for="label">Tanggal Awal</label>
-                            <input type="date" name="date1" id="date1" class="form-control">
+                            <x-pikaday name="date1" format="YYYY-MM-DD" class="form-control" />
                         </div>
                         <div class="input group mb-3">
                             <label for="label">Tanggal Akhir</label>
-                            <input type="date" name="date2" id="date2" class="form-control">
+                            <x-pikaday name="date2" format="YYYY-MM-DD" class="form-control" />
                         </div>
                         <div class="input group mb-3">
                             <a href="" onclick="this.href='/print/'+ document.getElementById('date1').value + '/' + document.getElementById('date2').value" target="_blank" class="btn btn-primary">Cetak</a>
