@@ -109,7 +109,18 @@
                                         <tr>
                                             <td><a href="{{ route('tickets.show', $ticket) }}">{{ $ticket->theme }}</a></td>
                                             <td>{{ $ticket->location['loc'] ?? 'Belum ditentukan' }}</td>
-                                            <td>{{ $ticket->getStatusLabel() }}</td>
+                                            <td>
+                                                <span class="badge badge-dot">
+                                                    @if ($ticket->isClosed())
+                                                        <i class="bg-success"></i>
+                                                    @elseif ($ticket->isInProgress())
+                                                        <i class="ni bg-warning"></i>
+                                                    @else
+                                                        <i class="ni bg-info"></i>
+                                                    @endif
+                                                    {{ $ticket->getStatusLabel() }}
+                                                </span>
+                                            </td>
                                             <td>{{ $ticket->created_at->diffForHumans() }}</td>
                                         </tr>
                                     @endforeach
