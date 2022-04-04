@@ -21,15 +21,17 @@ jobs:
           - 33306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-    - uses: actions/checkout@v1
+    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
-        fetch-depth: 1
+        php-version: '8.1.2'
+    - uses: actions/checkout@v3
     - name: Install composer dependencies
       run: |
         composer install --no-scripts
     - name: Prepare Laravel Application
       run: |
-        cp .env.ci .env
+        cp .env.example .env
         php artisan key:generate
+        php artisan migrate
     - name: Run Testsuite
       run: vendor/bin/phpunit tests/
