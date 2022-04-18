@@ -43,12 +43,12 @@ class ClientTest extends TestCase
     public function testCanCreateTicketOnceADAy()
     {
         $this->actingAs($this->client)
-            ->assertTrue(Gate::allows('create-ticket'), 'Когда еще не создал ни одной');
+            ->assertTrue(Gate::allows('create-ticket'), 'Kalau belum pernah buat sebelumnya');
 
         $ticket = factory(Ticket::class)->create(['client_id' => $this->client->id]);
 
         $this->actingAs($this->client)
-            ->assertFalse(Gate::allows('create-ticket'), 'Сразу после');
+            ->assertFalse(Gate::allows('create-ticket'), 'Pernah buat');
 
         $initialCreatedAt = $ticket->created_at;
 
@@ -56,18 +56,18 @@ class ClientTest extends TestCase
         $ticket->save();
 
         $this->actingAs($this->client)
-            ->assertFalse(Gate::allows('create-ticket'), 'Через час');
+            ->assertFalse(Gate::allows('create-ticket'), 'Dalam 1 jam');
 
         $ticket->created_at = $initialCreatedAt->copy()->subHours(23);
         $ticket->save();
 
         $this->actingAs($this->client)
-            ->assertFalse(Gate::allows('create-ticket'), 'Через 23 часа');
+            ->assertFalse(Gate::allows('create-ticket'), 'Setelah 23 jam');
 
         $ticket->created_at = $initialCreatedAt->copy()->subDay()->subSecond();
         $ticket->save();
 
         $this->actingAs($this->client)
-            ->assertTrue(Gate::allows('create-ticket'), 'Через сутки и одну секунду');
+            ->assertTrue(Gate::allows('create-ticket'), 'Dalam 1 hari lebih');
     }
 }

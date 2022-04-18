@@ -5,11 +5,13 @@ namespace Tests\Unit\Models\Ticket;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ManagerTest extends TestCase
 {
     use DatabaseTransactions;
+    use RefreshDatabase;
 
     public function testAssignManager()
     {
