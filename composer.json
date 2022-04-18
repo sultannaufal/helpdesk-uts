@@ -13,11 +13,14 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "laravel-frontend-presets/argon": "^1.1.1",
+        "laravel-frontend-presets/argon": "^1.1.2",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
-        "realrashid/sweet-alert": "^3.2.3"
+        "realrashid/sweet-alert": "^3.2.3",
+        "symfony/http-client": "^6.0",
+        "symfony/mailgun-mailer": "^6.0",
+        "symfony/postmark-mailer": "^6.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
