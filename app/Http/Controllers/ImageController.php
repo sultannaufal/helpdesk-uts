@@ -14,14 +14,13 @@ class ImageController extends Controller
     {
         Gate::authorize('manage');
         if ($request->hasFile('before') && $request->hasFile('after')) {
-        $image = new Image();
-        $image->ticket()->associate($ticket);
-        $image->before = \Storage::disk('public')
-            ->putFile('attachments', $request->file('before'));
-        $image->after = \Storage::disk('public')
-            ->putFile('attachments', $request->file('after'));
-
-        $image->save();
+            $image = new Image();
+            $image->ticket()->associate($ticket);
+            $image->before = \Storage::disk('public')
+                ->putFile('attachments', $request->file('before'));
+            $image->after = \Storage::disk('public')
+                ->putFile('attachments', $request->file('after'));
+            $image->save();
         }
         return redirect()
             ->route('tickets.show', $ticket)
