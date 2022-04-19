@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class ManagerTest extends TestCase
 {
-    use DatabaseTransactions;
     use RefreshDatabase;
 
     public function testAssignManager()
