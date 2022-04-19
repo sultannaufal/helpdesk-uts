@@ -30,7 +30,6 @@ class ManagerTest extends TestCase
         $this->assertTrue($ticket->isInProgress());
     }
 
-    // Вполне вероятно что менеджера могут переназначить, но это отдельный разговор
     public function testAlreadyAssigned()
     {
         $manager = factory(User::class)->create(['role' => User::ROLE_MANAGER]);

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AutoLoginController;
+use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
