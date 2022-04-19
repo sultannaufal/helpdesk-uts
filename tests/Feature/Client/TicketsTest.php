@@ -52,7 +52,7 @@ class TicketsTest extends TestCase
         $ticket = Ticket::where('theme', '=', $uniqTheme)->firstOrFail();
 
         $storeResponse->assertRedirect(route('tickets.show', $ticket))
-            ->assertSessionHas('success', 'Заявка успешно создана');
+            ->assertSessionHas('success', 'Created successfully');
 
         self::assertEquals($attachmentContent, \Storage::disk('public')->get($ticket->attachment));
     }
@@ -76,7 +76,7 @@ class TicketsTest extends TestCase
                 'content' => $ticket->content,
             ])
             ->assertRedirect(route('tickets.show', $ticket))
-            ->assertSessionHas('success', 'Заявка успешно обновлена');
+            ->assertSessionHas('success', 'Updated successfully');
 
         $ticket->refresh();
 
@@ -93,7 +93,7 @@ class TicketsTest extends TestCase
         $this->actingAs($this->client)
             ->post(route('tickets.close', $ticket))
             ->assertRedirect(route('tickets.show', $ticket))
-            ->assertSessionHas('success', 'Заявка успешно закрыта');
+            ->assertSessionHas('success', 'Closed successfully');
 
         $ticket->refresh();
         self::assertTrue($ticket->isClosed());
