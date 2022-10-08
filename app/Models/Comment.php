@@ -29,7 +29,6 @@ class Comment extends Model
     {
         parent::boot();
 
-        // При удалении комментария удалить файл с диска
         self::deleted(function (Comment $comment) {
             if ($comment->attachment) {
                 \Storage::disk('public')->delete($comment->attachment);
