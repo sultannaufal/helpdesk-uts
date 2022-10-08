@@ -146,7 +146,8 @@ class TicketController extends Controller
     {
         Gate::authorize('edit-ticket', $ticket);
         $ticket->delete();
-        return redirect()->route('tickets.index');
+        return redirect()->route('tickets.index')
+            ->with('toast_success', 'Pengaduan telah dihapus');
     }
 
     public function close(Ticket $ticket)
