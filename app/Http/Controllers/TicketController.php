@@ -132,7 +132,7 @@ class TicketController extends Controller
     {
         Gate::authorize('edit-ticket', $ticket);
 
-        $ticket->update($request->only(['theme', 'content']));
+        $ticket->update($request->only(['theme', 'content', 'location_id']));
 
         $ticket->attachment = $this->attachmentService->update($request, $ticket->attachment);
         $ticket->save();
