@@ -9,7 +9,6 @@
                 <div class="row align-items-center">
                     <h1 class="ticket__theme col-md-7 my-5">
                         {{ $ticket->theme }}
-
                         @if($ticket->isInProgress())
                             <span class="badge badge-primary">{{ $ticket->getStatusLabel() }}</span>
                         @elseif($ticket->isClosed())

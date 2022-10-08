@@ -6,7 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('storage/img/image.png') }}" class="navbar-brand-img" alt="...">
+            <img src="{{ asset('resources/uts-helpdesk-logo-color.png') }}" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">

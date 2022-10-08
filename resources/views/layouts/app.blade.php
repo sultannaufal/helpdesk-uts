@@ -20,7 +20,7 @@
     <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ mix('js/app.js', 'build') }}" defer></script>
     <script type="module">
-        import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
+        import * as Turbo from 'https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.2.0/dist/turbo.es2017-esm.js';
     </script>
     @bukStyles
 </head>
