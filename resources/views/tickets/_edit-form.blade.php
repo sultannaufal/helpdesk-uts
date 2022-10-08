@@ -62,16 +62,19 @@
                         <div class="form-group">
                             <label class="d-block">
                                 Lokasi
-                                <select class="browser-default custom-select @error('location_id') is-invalid @enderror" 
-                                        name="location_id" 
+                                <select class="browser-default custom-select @error('location_id') is-invalid @enderror"
+                                        name="location_id"
                                         id="location_id"
                                     >
-                                    <option value="{{ $ticket->location_id }}" selected>{{ $ticket->location_id->loc ?? 'Pilih' }}</option>
                                     @foreach ($locations as $item)
+                                        @if ($ticket->location_id && $ticket->location_id == $item->id)
+                                        <option value="{{ $item->id }}" selected>{{ $item->loc }}</option>
+                                        @else
                                         <option value="{{ $item->id }}">{{ $item->loc }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
-                                
+
                                 @error('location_id')
                                     <p class="invalid-feedback">{{ $errors->first('location_id') }}</p>
                                 @enderror

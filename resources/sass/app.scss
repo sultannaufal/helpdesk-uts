@@ -5,7 +5,7 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
 
 .ticket__theme {
     .badge {
@@ -17,7 +17,7 @@
 #use-old-attachment-condition {
     &[data-condition="true"] {
         + #attachment-group {
-            display: none; // Скрыть форму загрузки если стоит галочка "Использовать старый файл"
+            display: none;
         }
     }
 }

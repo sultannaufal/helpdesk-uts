@@ -14,9 +14,11 @@
     <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
     <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link type="text/css" href="{{ asset('argon') }}/css/argon.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ mix('css/app.css', 'build') }}">
     <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
     <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ mix('js/app.js', 'build') }}" defer></script>
     <script type="module">
         import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
     </script>

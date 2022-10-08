@@ -4,7 +4,7 @@
 @include('layouts.headers.main')
 <div class="container-fluid mt--7">
     <div class="row">
-        <div class="card shadow border-0">
+        <div class="card shadow border-0 w-100">
             <div class="card-header">
                 <div class="row align-items-center">
                     <h1 class="ticket__theme col-md-7 my-5">
@@ -34,20 +34,20 @@
 
                                 <form action="{{ route('tickets.close', $ticket) }}" method="POST">
                                     @csrf
-                                    <button onclick="return confirm('Yakin ubah status?')" class="btn btn-warning ml-1 mb-1">Close</button>
+                                    <button onclick="confirmAlert('Yakin ubah status?')" class="btn btn-warning ml-1 mb-1">Close</button>
                                 </form>
                             @else
                                 @if(! $ticket->hasImage())
                                     <a class="btn btn-success ml-1 mb-1" href="{{ route('image.add', compact('ticket')) }}">
                                         Tambah Gambar Kondisi
                                     </a>
-                                @endif                                
+                                @endif
                             @endif
 
                             <form action="{{ route('tickets.destroy', $ticket) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button onclick="return confirm('Yakin hapus?')" class="btn btn-danger ml-1 mb-1">Hapus</button>
+                                <button onclick="confirmAlert('Yakin hapus?')" class="btn btn-danger ml-1 mb-1">Hapus</button>
                             </form>
                         @endcan
                     </div>
@@ -112,7 +112,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            
+
                             <div class="card-body">
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
@@ -134,7 +134,7 @@
             @endif
         </div>
     </div>
-        
+
 
         <hr>
 
@@ -201,6 +201,6 @@
                 <a href="{{ route('comments.create', $ticket) }}" class="btn btn-primary">Tambah komentar</a>
             @endif
         </section>
-    
+
 </div>
 @endsection
