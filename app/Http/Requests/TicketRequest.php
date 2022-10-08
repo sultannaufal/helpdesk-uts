@@ -27,7 +27,7 @@ class TicketRequest extends FormRequest
             'theme' => 'required|string|max:255',
             'content' => 'required|string|max:10000',
             'location_id' => 'required|integer|max:255',
-            'attachment' => 'required|image|max:2000',
+            'attachment' => 'exclude_unless:use_old_attachment,true|required|image|max:2000',
         ];
     }
 
@@ -44,7 +44,7 @@ class TicketRequest extends FormRequest
             'location_id.integer' => 'Silahkan Pilih lokasi',
             'location_id.max' => 'Silahkan Pilih Lokasi',
             'attachment.required' => 'Mohon sertakan gambar',
-            'attachment.file' => 'Mohon sertakan gambar',
+            'attachment.image' => 'Mohon sertakan gambar',
             'attachment.max' => 'Nama File Terlalu Panjang',
         ];
     }
