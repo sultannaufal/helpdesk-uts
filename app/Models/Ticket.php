@@ -38,7 +38,7 @@ class Ticket extends Model
             if ($ticket->attachment) {
                 \Storage::disk('public')->delete($ticket->attachment);
             }
-            if ($ticket->image->before && $ticket->image->after){
+            if ($ticket->image && $ticket->image->before && $ticket->image->after){
                 \Storage::disk('public')->delete($ticket->image->before);
                 \Storage::disk('public')->delete($ticket->image->after);
             }
