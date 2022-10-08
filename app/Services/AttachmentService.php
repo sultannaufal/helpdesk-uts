@@ -8,7 +8,7 @@ class AttachmentService
 {
     /**
      * @param Request $request
-     * @return string|null - Путь к файлу
+     * @return string|null
      */
     public function store(Request $request): ?string
     {
@@ -23,7 +23,7 @@ class AttachmentService
     /**
      * @param Request $request
      * @param string $oldAttachment
-     * @return string|null - Путь к файлу
+     * @return string|null
      */
     public function update(Request $request, ?string $oldAttachment): ?string
     {
@@ -32,7 +32,7 @@ class AttachmentService
 
         if (! $shouldUseOldAttachment) {
 
-            if ($oldAttachment) { // Удалить старый если был
+            if ($oldAttachment) {
                 \Storage::disk('public')->delete($oldAttachment);
             }
 
