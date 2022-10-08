@@ -16751,7 +16751,7 @@
          * @author Rashid Ali <realrashid05@gmail.com>
          * @static 
          */ 
-        public static function image($title, $text, $imageUrl, $imageWidth, $imageHeight, $imageAlt)
+        public static function image($title, $text, $imageUrl, $imageWidth, $imageHeight, $imageAlt = null)
         {
                         /** @var \RealRashid\SweetAlert\Toaster $instance */
                         return $instance->image($title, $text, $imageUrl, $imageWidth, $imageHeight, $imageAlt);
