@@ -64,7 +64,7 @@ class CreateManagerCommand extends Command
 
         }
 
-        $this->info('Менеджер успешно создан');
+        $this->info('Success Create Manager');
         return true;
     }
 }
