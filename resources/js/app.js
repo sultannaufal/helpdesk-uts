@@ -1,6 +1,5 @@
-require('./bootstrap');
+// require('./bootstrap');
 
-// Подставлять имена загружаемых файлов
 $('.custom-file-input').on('change', function () {
     $(this).parent()
         .find('.custom-file-label')
