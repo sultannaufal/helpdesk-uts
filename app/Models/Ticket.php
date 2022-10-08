@@ -183,12 +183,12 @@ class Ticket extends Model
 
     public function scopeNotAnswered(Builder $query): Builder
     {
-        return $query->whereHas('comments', function ($query) { // Где только клиентские комменты
+        return $query->whereHas('comments', function ($query) {
             return $query->whereHas('user', function ($query) {
                 return $query->where('role', '<>', User::ROLE_MANAGER);
             });
         })
-            ->orWhereDoesntHave('comments'); // Или комментов вообще нету
+            ->orWhereDoesntHave('comments');
     }
 
     public function scopeViewedBy(Builder $query, User $user): Builder
