@@ -13,7 +13,6 @@ class Image extends Model
     {
         parent::boot();
 
-        // При удалении заявки удалить файлы с диска
         self::deleted(function (Image $image) {
                 \Storage::disk('public')->delete($image->before);
                 \Storage::disk('public')->delete($image->after);
